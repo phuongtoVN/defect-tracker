@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import SearchBar from '../../components/SearchBar';
 import SortControls from '../../components/SortControls';
 import DefectList from '../../components/DefectList';
-import Pagination from '../../components/Pagination';
 import FabAddButton from '../../components/FabAddButton';
 import DetailPanel from '../../components/DetailPanel';
 import { useQueryParams } from '../../hooks/useQueryParams';
@@ -11,34 +10,54 @@ import type { SortKey } from '../../utils/sort';
 import { useSortedFilteredDefects } from '../../hooks/useSortedFilteredDefects';
 import styles from './styles.module.css';
 
-const PAGE_SIZE = 10;
+const CHUNK = 20;           // how many more items to reveal each time you hit bottom
+const ALL   = 10000;        // page size big enough to retrieve all filtered items
 
 export default function DefectSplitPage() {
-  const { get, setMany } = useQueryParams({ q: '', sort: DEFAULT_SORT, page: 1 });
+  // we no longer keep "page" in the URL – only q + sort
+  const { get, setMany } = useQueryParams({ q: '', sort: DEFAULT_SORT });
   const q = get('q');
   const sort = (get('sort') as SortKey) || DEFAULT_SORT;
-  const page = Math.max(1, parseInt(get('page') || '1', 10));
 
-  const { items, total } = useSortedFilteredDefects(q, sort, page, PAGE_SIZE);
-  const pageCount = Math.max(1, Math.ceil(total / PAGE_SIZE));
+  // get ALL items matching q+sort; we'll reveal them gradually as the user scrolls
+  const { items } = useSortedFilteredDefects(q, sort, 1, ALL);
+
+  const [visibleCount, setVisibleCount] = useState(CHUNK);
+  const leftRef = useRef<HTMLDivElement | null>(null);
+
+  // when the query/sort changes, reset the visible window
+  useEffect(() => {
+    setVisibleCount(CHUNK);
+    // also scroll back to top of the left pane
+    leftRef.current?.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
+  }, [q, sort]);
+
+  // load more when near the bottom of the left pane
+  useEffect(() => {
+    const el = leftRef.current;
+    if (!el) return;
+
+    const onScroll = () => {
+      const nearBottom = el.scrollTop + el.clientHeight >= el.scrollHeight - 20;
+      if (nearBottom) setVisibleCount((c) => Math.min(c + CHUNK, items.length));
+    };
+
+    el.addEventListener('scroll', onScroll);
+    return () => el.removeEventListener('scroll', onScroll);
+  }, [items.length]);
 
   return (
     <div className={styles.page}>
-      <div className={styles.leftPane}>
+      {/* Make sure .leftPane in styles.module.css has overflow-y:auto */}
+      <div className={styles.leftPane} ref={leftRef}>
         <div className={styles.controls}>
-          <SearchBar value={q} onChange={(v) => setMany({ q: v, page: 1 })} />
-          <SortControls sort={sort} onChange={(v) => setMany({ sort: v, page: 1 })} />
+          <SearchBar value={q} onChange={(v) => setMany({ q: v })} />
+          <SortControls sort={sort} onChange={(v) => setMany({ sort: v })} />
         </div>
 
         <div className={styles.list}>
-          <DefectList items={items} />
+          <DefectList items={items.slice(0, visibleCount)} />
         </div>
-
-        <Pagination
-          page={page}
-          pageCount={pageCount}
-          onChange={(p) => setMany({ page: p })}
-        />
       </div>
 
       <div className={styles.rightPane}>
@@ -47,7 +66,6 @@ export default function DefectSplitPage() {
         </div>
       </div>
 
-      {/* FabAddButton still uses the global .fab class from globals.css */}
       <FabAddButton />
     </div>
   );
