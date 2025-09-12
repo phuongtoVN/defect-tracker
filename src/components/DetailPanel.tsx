@@ -63,17 +63,8 @@ export default function DetailPanel() {
         <div><strong>Created</strong><div>{formatDate(d.createdAt)}</div></div>
         <div><strong>Updated</strong><div>{formatDate(d.updatedAt)}</div></div>
 
-        {/* If you added date fields in the form (reportedDate/assignedDate) show them */}
-        {'reportedDate' in d ? (
-          <div><strong>Reported Date</strong>
-            <div>{d.reportedDate ? formatDate(d.reportedDate) : '—'}</div>
-          </div>
-        ) : null}
-        {'assignedDate' in d ? (
-          <div><strong>Assigned Date</strong>
-            <div>{d.assignedDate ? formatDate(d.assignedDate) : '—'}</div>
-          </div>
-        ) : null}
+       
+        
       </div>
 
       <hr />
