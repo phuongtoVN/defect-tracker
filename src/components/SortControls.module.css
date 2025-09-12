@@ -1,0 +1,98 @@
+/* SortControls.module.css */
+
+.root {
+  position: relative;
+  z-index: 2;              /* ensure it sits above list/cards */
+}
+
+/* pill-style trigger, like your reference screenshot */
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 12px;     /* rounded corners */
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--text);
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: 0 2px 6px rgba(2, 8, 20, 0.06);      /* soft shadow */
+  transition: background .15s ease, border-color .15s ease, box-shadow .15s ease;
+}
+
+.trigger:hover {
+  background: var(--panel-hover);
+  border-color: var(--blue-200);
+}
+
+.trigger:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--blue) 25%, transparent);
+}
+
+/* label + caret */
+.label {
+  font-size: 14px;
+}
+
+.caret {
+  width: 14px;
+  height: 14px;
+  opacity: 0.8;
+  transition: transform .15s ease;
+}
+
+/* rotate caret when open (no TSX change needed) */
+.trigger[aria-expanded='true'] .caret {
+  transform: rotate(180deg);
+}
+
+/* dropdown panel — opaque, rounded, with shadow */
+.menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 240px;
+
+  background-color: var(--panel-elev) !important;  /* force solid bg */
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 18px 40px rgba(2, 8, 20, 0.12);
+  padding: 6px;
+  z-index: 1000;
+  isolation: isolate;
+}
+
+/* option rows */
+.item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background .12s ease, border-color .12s ease;
+  background: transparent; /* panel carries the opacity */
+}
+
+.item:hover,
+.itemActive {
+  background: var(--panel-hover);
+}
+
+.itemSelected {
+  font-weight: 700;
+  background: var(--blue-50);
+  border: 1px solid var(--blue-200);
+}
+
+.itemText { flex: 1; font-size: 14px; }
+.check    { width: 18px; height: 18px; color: var(--blue); }
+
+/* small screens: keep it comfy */
+@media (max-width: 640px) {
+  .menu { min-width: 200px; }
+}
