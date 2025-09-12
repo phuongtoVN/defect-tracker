@@ -51,3 +51,14 @@ body { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, '
 .new-form .row { display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .new-form .actions { display:flex; justify-content:flex-end; }
 .primary { background: #0f69c3; color:white; border:none; padding: 10px 16px; border-radius: 10px; }
+
+.item-row { display: flex; align-items: center; gap: 12px;}
+.defect-item {   min-height: 86px; display: flex; flex-direction: column; gap: 6px; overflow: hidden; }
+.item-title { font-weight: 700; font-size: 16px; line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.item-date { margin-left: auto; font-size: 12px; color: #64748b; white-space: nowrap; }
+.item-desc { font-size: 14px; color: #475569; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+@media (max-width: 640px) {
+  .defect-item { min-height: 74px; }
+  .item-title { font-size: 15px; }
+  .item-desc  { font-size: 13px; }
+}
