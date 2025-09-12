@@ -1,33 +1,28 @@
-/* Full-screen dimmed backdrop */
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(4px);
+  background: rgba(15, 23, 42, 0.08); /* light tint so the page is visible */
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px;            
+  padding: 24px;
   z-index: 1000;
 }
 
-/* The modal panel/card */
 .modalCard {
-  width: 600px;             
-  max-width: 92vw;          
-  max-height: 90vh;         
-  overflow-y: auto;         
+  width: 600px;
+  max-width: 92vw;
+  max-height: 90vh;
+  overflow-y: auto;
   background: #fff;
   border-radius: 16px;
   box-shadow: 0 24px 60px rgba(2, 8, 20, 0.25);
-  padding: 24px;           
-  display: flex;
-  flex-direction: column;
+  padding: 24px;
+  animation: modalIn 160ms ease-out;
 }
-
-/* Optional: subtle entrance animation */
 @keyframes modalIn {
   from { transform: translateY(-8px); opacity: 0; }
   to   { transform: translateY(0);    opacity: 1; }
 }
-.modalCard { animation: modalIn 160ms ease-out; }

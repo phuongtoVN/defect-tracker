@@ -7,7 +7,7 @@ body { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, '
 .header-title { font-weight: 700; font-size: 22px; text-align: center; }
 
 .app-content { flex: 1; max-width: 1200px; margin: 18px auto; padding: 0 16px; transition: filter .2s ease; }
-.app-content.blurred { filter: blur(3px) brightness(0.98); }
+.app-content.blurred { filter: blur(3px); }
 
 .page { position: relative; display: grid; grid-template-columns: 420px 1fr; gap: 20px; }
 .left-pane { background: white; border-radius: 14px; box-shadow: 0 12px 30px rgba(2,8,20,.06); padding: 16px; height: calc(100vh - 170px); overflow: auto; }
