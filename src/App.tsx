@@ -1,28 +1,22 @@
-import React from 'react';
-import { Outlet, useLocation, Link } from 'react-router-dom';
-import Header from './components/Header';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import DefectsListPage from './pages/DefectsListPage/DefectsListPage';
+import DefectSplitPage from './pages/DefectSplitPage/DefectSplitPage';
+import MobileDetailPage from './pages/MobileDetailPage/MobileDetailPage';
+import NewDefectModal from './pages/NewDefectModal/NewDefectModal';
+import useIsMobile from './hooks/useIsMobile';
 
-// Blur the background whenever the modal route is active
-const useIsModalRoute = () => {
-  const { pathname } = useLocation();
-  return pathname.endsWith('/new');
-};
+function ResponsiveDefectRoute() {
+  const isMobile = useIsMobile(768);
+  return isMobile ? <MobileDetailPage /> : <DefectSplitPage />;
+}
 
-const App: React.FC = () => {
-  const isModal = useIsModalRoute();
+export default function App() {
   return (
-    <div className="app-root">
-      <Header />
-      <div className={`app-content ${isModal ? 'blurred' : ''}`}>
-        <Outlet />
-      </div>
-
-      {/* Footer credits (optional) */}
-      <div style={{ textAlign:'center', color:'#9aa4b2', fontSize:12, padding:10 }}>
-        <Link to="/defects">Home</Link>
-      </div>
-    </div>
+    <Routes>
+      <Route path="/" element={<Navigate to="/defects" replace />} />
+      <Route path="/defects" element={<DefectsListPage />} />
+      <Route path="/defects/new" element={<NewDefectModal />} />
+      <Route path="/defects/:id" element={<ResponsiveDefectRoute />} />
+    </Routes>
   );
-};
-
-export default App;
+}
