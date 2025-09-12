@@ -1,0 +1,71 @@
+.root {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  /* pill size */
+  height: 40px;
+  width: clamp(200px, 28vw, 360px);
+
+  padding: 0 12px 0 40px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+
+  background: var(--panel);
+  color: var(--text);
+  box-shadow: var(--shadow-1);
+}
+
+.root:focus-within {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--blue) 25%, transparent);
+}
+
+.icon {
+  position: absolute;
+  left: 12px;
+  width: 18px;
+  height: 18px;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+input {
+  flex: 1;
+  height: 100%;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+}
+
+input::placeholder { color: var(--text-muted); opacity: .75; }
+
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+  display: none;
+}
+
+
+.clear {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  margin-left: 6px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.clear:hover { background: var(--panel-hover); color: var(--text); }
+.clear svg { width: 14px; height: 14px; }
+
+/* mobile: let it grow full width if needed */
+@media (max-width: 640px) {
+  .root { width: 100%; }
+}

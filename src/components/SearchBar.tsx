@@ -1,25 +1,50 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import styles from './SearchBar.module.css';
 
-export default function SearchBar({ value, onChange }:{
-  value: string; onChange: (v: string)=>void;
-}) {
-  const [local, setLocal] = useState(value);
-  useEffect(()=>{ setLocal(value); }, [value]);
+type Props = {
+  value: string;
+  onChange: (v: string) => void;
+  placeholder?: string;
+  className?: string;
+};
 
-  // Simple debounce
-  useEffect(() => {
-    const t = setTimeout(() => onChange(local), 250);
-    return () => clearTimeout(t);
-  }, [local]);
-
+export default function SearchBar({
+  value,
+  onChange,
+  placeholder = 'Search defects…',
+  className = '',
+}: Props) {
   return (
-    <div className="searchbar">
+    <div className={`${styles.root} ${className}`}>
+      <svg className={styles.icon} viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          d="M15.5 15.5l5 5m-2.5-7.5a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+        />
+      </svg>
+
       <input
-        value={local}
-        onChange={e=>setLocal(e.target.value)}
-        placeholder="Search defects..."
+        type="search"
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder={placeholder}
         aria-label="Search defects"
       />
+
+      {value && (
+        <button
+          type="button"
+          className={styles.clear}
+          aria-label="Clear search"
+          onClick={() => onChange('')}
+        >
+          <svg viewBox="0 0 20 20" aria-hidden="true">
+            <path d="M6 6l8 8M14 6l-8 8" stroke="currentColor" strokeWidth="2" fill="none" />
+          </svg>
+        </button>
+      )}
     </div>
   );
 }
