@@ -51,9 +51,15 @@ export default function DefectSplitPage() {
       {/* Make sure .leftPane in styles.module.css has overflow-y:auto */}
       <div className={styles.leftPane} ref={leftRef}>
         <div className={styles.controls}>
-          <SearchBar value={q} onChange={(v) => setMany({ q: v })} />
-          <SortControls sort={sort} onChange={(v) => setMany({ sort: v })} />
+          <div className={styles.searchWrap}>
+            <SearchBar value={q} onChange={(v) => setMany({ q: v })} />
+          </div>
+
+          <div className={styles.filterWrap}>
+            <SortControls sort={sort} onChange={(v) => setMany({ sort: v })} />
+          </div>
         </div>
+
 
         <div className={styles.list}>
           <DefectList items={items.slice(0, visibleCount)} />

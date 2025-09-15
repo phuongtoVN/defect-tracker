@@ -24,19 +24,22 @@ export default function DefectsListPage() {
   useScrollRestoration(`defects:list:${q}:${sort}`, scrollRef, !isLoading);
 
   return (
-    <div className={styles.page}>
-      <div className={styles.controls}>
+  <div className={styles.page}>
+    <div className={styles.controls}>
+      <div className={styles.searchWrap}>
         <SearchBar value={q} onChange={(v) => setMany({ q: v })} />
+      </div>
+
+      <div className={styles.sortWrap}>
         <SortControls sort={sort} onChange={(v) => setMany({ sort: v })} />
       </div>
-
-      <div ref={scrollRef} className={styles.scrollArea}>
-        {isLoading && <p className={styles.info}>Loading defects…</p>}
-        {loadError && <p className={styles.error}>Failed to load: {loadError}</p>}
-        <DefectList items={items} />
-      </div>
-
-      <FabAddButton />
     </div>
-  );
+
+    <div className={styles.scrollArea}>
+      <DefectList items={items} />
+    </div>
+
+    <FabAddButton />
+  </div>
+);
 }

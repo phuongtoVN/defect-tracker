@@ -39,7 +39,7 @@ body { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, '
 .pagination button:disabled { opacity: .5; }
 
 .detail-panel { min-height: 100%; }
-.detail-header { display: flex; justify-content: space-between; align-items: center; position: sticky; top: -18px; padding-top: 8px; background: var(--panel); }
+.detail-header { display: flex; justify-content: space-between; align-items: center; position: sticky; top: -18px; padding-top: 8px; background: var(--panel); gap: 8px;}
 .detail-title { font-weight: 800; font-size: 24px; }
 .close { border: none; background: var(--panel-hover); color: var(--text); width: 36px; height: 36px; border-radius: 10px; cursor: pointer; }
 .detail-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px 24px; }
@@ -61,4 +61,38 @@ body { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, '
   .defect-item { min-height: 74px; }
   .item-title { font-size: 15px; }
   .item-desc { font-size: 13px; }
+}
+.close {
+  font-size: 20px;                 /* tweak this if you want larger/smaller */
+  width: var(--size);
+  height: var(--size);
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--panel-hover);
+  color: var(--text);
+  display: inline-flex;         /* centers the SVG */
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  line-height: 1;
+  box-shadow: var(--shadow-2);
+  transition: background .15s ease, border-color .15s ease, box-shadow .15s ease;
+  /* prevents the button from shrinking too small in tight layouts */
+  flex: 0 0 auto;
+}
+
+.close:hover {
+  background: var(--blue-50);
+  border-color: var(--blue-200);
+}
+
+.close:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--blue) 25%, transparent);
+}
+
+/* Slightly larger target on touch devices / mobile */
+@media (pointer: coarse), (max-width: 640px) {
+  .close { --size: 44px; }
 }
