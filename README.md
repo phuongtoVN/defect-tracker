@@ -1,8 +1,8 @@
-Defect Tracker (React + TypeScript, Vite)
+# Defect Tracker (React + TypeScript, Vite)
 
 A small, responsive app to browse, read, and add defects with a clean modern UI. Uses a local JSON dataset and in-memory additions.
 
-Features
+# Features
 
 List view with search, sort (Newest/Oldest, A→Z/Z→A, Priority), and a one-line description preview + date.
 
@@ -20,7 +20,7 @@ npm install
 
 # run dev
 npm run dev
-# open the printed http://localhost:xxxx
+# open the printed http://localhost:5173
 
 # build & preview
 npm run build
