@@ -1,77 +1,162 @@
-# Defect Tracker (React + TypeScript, Vite)
+# Defect Tracker (React + Vite + TypeScript)
 
-A small, responsive app to browse, read, and add defects with a clean modern UI. Uses a local JSON dataset and in-memory additions.
+A lightweight single-page **Defect Tracking** app with list + detail views and an in-memory “Add Defect” form. Built with **React**, **Vite**, and **TypeScript**, deployed to **GitHub Pages**.
 
-# Features
+Live: https://phuongtoVN.github.io/defect-tracker/
 
-List view with search, sort (Newest/Oldest, A→Z/Z→A, Priority), and a one-line description preview + date.
+---
 
-Split view (wide screens): list left, details right — each scrolls independently.
+## Features
+- Defects list with search, filters, sort, and pagination  
+- Detail panel/page for full defect info  
+- Add new defect (client-side/in-memory)  
+- Responsive UI (desktop → mobile)  
+- Static hosting via GitHub Pages
 
-Mobile detail page with back-to-same-position behavior.
+Data source: `public/defect.json`.
 
-Add defect modal with blurred background; ESC or “×” to close.
+---
 
-No persistent header — maximizes workspace and mirrors native app patterns.
+## Tech Stack
+- React 19, TypeScript  
+- Vite (build/dev server)  
+- React Router v7  
+- Context + reducer state management  
+- CSS (globals + theme)
 
-Quick start
-# install
-npm install
+---
 
-# run dev
+## Getting Started
+
+### Prerequisites
+- Node.js 18+ (Node 20 recommended)
+- npm
+
+### Install & Run
+```bash
+npm ci
 npm run dev
-# open the printed http://localhost:5173
+```
+App runs at: http://localhost:5173
 
-# build & preview
+### Build
+```bash
 npm run build
-npm run preview
+```
+Build output: `dist/`
 
-Structure (high-level)
-src/
-  components/
-    DefectList.tsx
-    DefectListItem.tsx
-    DetailPanel.tsx
-    FabAddButton.tsx
-    Modal.tsx (+ Modal.module.css)
-    Badge.tsx
-  hooks/
-    useQueryParams.ts
-    useSortedFilteredDefects.ts
-    useScrollRestoration.ts
-    useIsMobile.ts
-    useModalBackground.ts
-  pages/
-    DefectsListPage/
-    DefectSplitPage/
-    MobileDetailPage/
-    NewDefectModal/
-  state/
-    DefectsContext.tsx
-  styles/
-    globals.css
-  utils/
-    sort.ts (includes priority sorts)
-    dates.ts
-public/
-  data/defects.json
+---
 
-Notes
+## Project Structure
+```
+defect-tracker/
+├─ public/
+│  └─ defect.json
+├─ src/
+│  ├─ components/
+│  ├─ pages/
+│  ├─ router/
+│  ├─ state/
+│  │  ├─ DefectsContext.tsx
+│  │  └─ defectsReducer.ts
+│  ├─ styles/
+│  ├─ App.tsx
+│  └─ main.tsx
+├─ index.html
+├─ vite.config.ts
+└─ package.json
+```
 
-New defects are stored in memory and will reset on refresh (by design for this challenge).
+---
 
-The sort dropdown is keyboard accessible (↑/↓, Enter, ESC).
+## Data Loading (works locally and on GitHub Pages)
+```ts
+// DefectsContext.tsx (excerpt)
+const asset = (p: string) => new URL(p, import.meta.env.BASE_URL).toString();
 
-URL query params persist search and sort state.
+const res = await fetch(asset('defect.json'));
+const data = await res.json();
+```
+Keep `defect.json` in `public/`. After build it will be available at:
+`/defect-tracker/defect.json`.
 
-Example git history conventions
+---
 
-feat: custom sort dropdown (accessible) + priority sorts
+## Routing
+```tsx
+// src/main.tsx (excerpt)
+<BrowserRouter basename="/defect-tracker">
+  <App />
+</BrowserRouter>
+```
+SPA refresh support: the build script copies `index.html` → `404.html`.
 
-ui: equal-height list cards with one-line preview
+---
 
-feat: modal add-defect + blurred background
+## Deploying to GitHub Pages (manual via gh-pages)
 
-fix: restore list scroll after back nav
+### 1) Configure Vite base
+```ts
+// vite.config.ts
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
-refactor: move filters to URL params
+export default defineConfig({
+  plugins: [react()],
+  base: '/defect-tracker/',   // trailing slash required
+})
+```
+
+### 2) Scripts
+```json
+{
+  "scripts": {
+    "build": "tsc -b && vite build && copy dist\\index.html dist\\404.html",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  }
+}
+```
+(mac/Linux: replace `copy` with `cp`)
+
+### 3) Publish
+```bash
+npm run deploy
+```
+
+### 4) Pages Settings
+GitHub → **Settings → Pages**  
+Source: **Deploy from a branch**  
+Branch: **gh-pages** • Folder: **/** (root)
+
+---
+
+## Common Issues
+
+- **White screen**  
+  Pages is serving the source (`/src/main.tsx`). Point Pages to **gh-pages (root)**.
+
+- **Assets 404 (CSS/JS not found)**  
+  Ensure `base: '/defect-tracker/'` in `vite.config.ts`.
+
+- **Data 404 (`defect.json`)**  
+  Use `new URL('defect.json', import.meta.env.BASE_URL)` when fetching.  
+  Check that `https://<user>.github.io/defect-tracker/defect.json` loads.
+
+- **Refresh 404 on routes**  
+  Ensure `dist/404.html` exists (copied in the build script).
+
+---
+
+## Scripts
+```bash
+npm run dev       # start local dev server
+npm run build     # production build (creates dist + 404.html)
+npm run preview   # preview production build locally
+npm run deploy    # publish dist/ to gh-pages branch
+```
+
+---
+
+## License
+MIT
