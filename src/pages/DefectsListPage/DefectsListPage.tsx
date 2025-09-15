@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import SearchBar from '../../components/SearchBar';
 import SortControls from '../../components/SortControls';
 import DefectList from '../../components/DefectList';
@@ -17,7 +17,7 @@ export default function DefectsListPage() {
   const q = get('q');
   const sort = (get('sort') as SortKey) || DEFAULT_SORT;
 
-  const { items, isLoading, loadError } = useSortedFilteredDefects(q, sort, 1, ALL);
+  const { items, isLoading } = useSortedFilteredDefects(q, sort, 1, ALL);
 
   const scrollRef = useRef<HTMLDivElement>(null);
   // ready when not loading; (items.length > 0) works too

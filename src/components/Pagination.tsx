@@ -1,4 +1,3 @@
-import React from 'react';
 
 export default function Pagination({ page, pageCount, onChange }:{
   page: number; pageCount: number; onChange: (p: number)=>void;

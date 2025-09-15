@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import SearchBar from '../../components/SearchBar';
 import SortControls from '../../components/SortControls';
 import DefectList from '../../components/DefectList';

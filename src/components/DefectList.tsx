@@ -1,4 +1,3 @@
-import React from 'react';
 import type { Defect } from '../types/defect';
 import DefectListItem from './DefectListItem';
 

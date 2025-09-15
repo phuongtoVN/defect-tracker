@@ -1,4 +1,3 @@
-import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDefects } from '../state/DefectsContext';
 import { formatDate } from '../utils/dates';
