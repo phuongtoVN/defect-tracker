@@ -9,7 +9,7 @@ import './styles/theme.css';
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <DefectsProvider>
-      <BrowserRouter>
+      <BrowserRouter basename="/defect-tracker">
         <App />
       </BrowserRouter>
     </DefectsProvider>
