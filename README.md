@@ -1,69 +1,77 @@
-# React + TypeScript + Vite
+Defect Tracker (React + TypeScript, Vite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A small, responsive app to browse, read, and add defects with a clean modern UI. Uses a local JSON dataset and in-memory additions.
 
-Currently, two official plugins are available:
+Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+List view with search, sort (Newest/Oldest, A→Z/Z→A, Priority), and a one-line description preview + date.
 
-## Expanding the ESLint configuration
+Split view (wide screens): list left, details right — each scrolls independently.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Mobile detail page with back-to-same-position behavior.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Add defect modal with blurred background; ESC or “×” to close.
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+No persistent header — maximizes workspace and mirrors native app patterns.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Quick start
+# install
+npm install
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+# run dev
+npm run dev
+# open the printed http://localhost:xxxx
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+# build & preview
+npm run build
+npm run preview
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Structure (high-level)
+src/
+  components/
+    DefectList.tsx
+    DefectListItem.tsx
+    DetailPanel.tsx
+    FabAddButton.tsx
+    Modal.tsx (+ Modal.module.css)
+    Badge.tsx
+  hooks/
+    useQueryParams.ts
+    useSortedFilteredDefects.ts
+    useScrollRestoration.ts
+    useIsMobile.ts
+    useModalBackground.ts
+  pages/
+    DefectsListPage/
+    DefectSplitPage/
+    MobileDetailPage/
+    NewDefectModal/
+  state/
+    DefectsContext.tsx
+  styles/
+    globals.css
+  utils/
+    sort.ts (includes priority sorts)
+    dates.ts
+public/
+  data/defects.json
+
+Notes
+
+New defects are stored in memory and will reset on refresh (by design for this challenge).
+
+The sort dropdown is keyboard accessible (↑/↓, Enter, ESC).
+
+URL query params persist search and sort state.
+
+Example git history conventions
+
+feat: custom sort dropdown (accessible) + priority sorts
+
+ui: equal-height list cards with one-line preview
+
+feat: modal add-defect + blurred background
+
+fix: restore list scroll after back nav
+
+refactor: move filters to URL params
