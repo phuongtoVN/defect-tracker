@@ -1,0 +1,407 @@
+[
+    {
+        "id": 1,
+        "title": "Defect 1",
+        "severity": "Medium",
+        "status": "Closed",
+        "reportedBy": "Inspector A",
+        "description": "Auto-generated description for defect 1.",
+        "partNumber": "PN-3001",
+        "supplier": "SupplierB",
+        "createdAt": "2025-09-09T12:00:00",
+        "updatedAt": "2025-09-09T12:00:00",
+        "assignedTo": "Engineer Y",
+        "tags": [
+            "critical",
+            "inspection"
+        ],
+        "stepsToReproduce": [
+            "Locate the component",
+            "Apply standard inspection procedure",
+            "Record observation #1"
+        ],
+        "attachments": [
+            "https://example.com/images/defect_1_1.png",
+            "https://example.com/images/defect_1_2.png"
+        ],
+        "priorityRank": 1
+    },
+    {
+        "id": 2,
+        "title": "Defect 2",
+        "severity": "High",
+        "status": "In Progress",
+        "reportedBy": "Inspector B",
+        "description": "Auto-generated description for defect 2.",
+        "partNumber": "PN-3002",
+        "supplier": "SupplierC",
+        "createdAt": "2025-09-09T12:00:00",
+        "updatedAt": "2025-09-09T12:00:00",
+        "assignedTo": "Engineer Z",
+        "tags": [
+            "structural",
+            "cosmetic"
+        ],
+        "stepsToReproduce": [
+            "Locate the component",
+            "Apply standard inspection procedure",
+            "Record observation #2"
+        ],
+        "attachments": [
+            "https://example.com/images/defect_2_1.png",
+            "https://example.com/images/defect_2_2.png"
+        ],
+        "priorityRank": 2
+    },
+    {
+        "id": 3,
+        "title": "Defect 3",
+        "severity": "Critical",
+        "status": "Open",
+        "reportedBy": "Inspector C",
+        "description": "Auto-generated description for defect 3.",
+        "partNumber": "PN-3003",
+        "supplier": "SupplierD",
+        "createdAt": "2025-09-09T12:00:00",
+        "updatedAt": "2025-09-09T12:00:00",
+        "assignedTo": "Engineer X",
+        "tags": [
+            "critical",
+            "inspection"
+        ],
+        "stepsToReproduce": [
+            "Locate the component",
+            "Apply standard inspection procedure",
+            "Record observation #3"
+        ],
+        "attachments": [
+            "https://example.com/images/defect_3_1.png",
+            "https://example.com/images/defect_3_2.png"
+        ],
+        "priorityRank": 3
+    },
+    {
+        "id": 4,
+        "title": "Defect 4",
+        "severity": "Low",
+        "status": "Closed",
+        "reportedBy": "Inspector D",
+        "description": "Auto-generated description for defect 4.",
+        "partNumber": "PN-3004",
+        "supplier": "SupplierE",
+        "createdAt": "2025-09-09T12:00:00",
+        "updatedAt": "2025-09-09T12:00:00",
+        "assignedTo": "Engineer Y",
+        "tags": [
+            "structural",
+            "cosmetic"
+        ],
+        "stepsToReproduce": [
+            "Locate the component",
+            "Apply standard inspection procedure",
+            "Record observation #4"
+        ],
+        "attachments": [
+            "https://example.com/images/defect_4_1.png",
+            "https://example.com/images/defect_4_2.png"
+        ],
+        "priorityRank": 4
+    },
+    {
+        "id": 5,
+        "title": "Defect 5",
+        "severity": "Medium",
+        "status": "In Progress",
+        "reportedBy": "Inspector E",
+        "description": "Auto-generated description for defect 5.",
+        "partNumber": "PN-3005",
+        "supplier": "SupplierA",
+        "createdAt": "2025-09-09T12:00:00",
+        "updatedAt": "2025-09-09T12:00:00",
+        "assignedTo": "Engineer Z",
+        "tags": [
+            "critical",
+            "inspection"
+        ],
+        "stepsToReproduce": [
+            "Locate the component",
+            "Apply standard inspection procedure",
+            "Record observation #5"
+        ],
+        "attachments": [
+            "https://example.com/images/defect_5_1.png",
+            "https://example.com/images/defect_5_2.png"
+        ],
+        "priorityRank": 5
+    },
+    {
+        "id": 6,
+        "title": "Defect 6",
+        "severity": "High",
+        "status": "Open",
+        "reportedBy": "Inspector F",
+        "description": "Auto-generated description for defect 6.",
+        "partNumber": "PN-3006",
+        "supplier": "SupplierB",
+        "createdAt": "2025-09-09T12:00:00",
+        "updatedAt": "2025-09-09T12:00:00",
+        "assignedTo": "Engineer X",
+        "tags": [
+            "structural",
+            "cosmetic"
+        ],
+        "stepsToReproduce": [
+            "Locate the component",
+            "Apply standard inspection procedure",
+            "Record observation #6"
+        ],
+        "attachments": [
+            "https://example.com/images/defect_6_1.png",
+            "https://example.com/images/defect_6_2.png"
+        ],
+        "priorityRank": 6
+    },
+    {
+        "id": 7,
+        "title": "Defect 7",
+        "severity": "Critical",
+        "status": "Closed",
+        "reportedBy": "Inspector G",
+        "description": "Auto-generated description for defect 7.",
+        "partNumber": "PN-3007",
+        "supplier": "SupplierC",
+        "createdAt": "2025-09-09T12:00:00",
+        "updatedAt": "2025-09-09T12:00:00",
+        "assignedTo": "Engineer Y",
+        "tags": [
+            "critical",
+            "inspection"
+        ],
+        "stepsToReproduce": [
+            "Locate the component",
+            "Apply standard inspection procedure",
+            "Record observation #7"
+        ],
+        "attachments": [
+            "https://example.com/images/defect_7_1.png",
+            "https://example.com/images/defect_7_2.png"
+        ],
+        "priorityRank": 7
+    },
+    {
+        "id": 8,
+        "title": "Defect 8",
+        "severity": "Low",
+        "status": "In Progress",
+        "reportedBy": "Inspector H",
+        "description": "Auto-generated description for defect 8.",
+        "partNumber": "PN-3008",
+        "supplier": "SupplierD",
+        "createdAt": "2025-09-09T12:00:00",
+        "updatedAt": "2025-09-09T12:00:00",
+        "assignedTo": "Engineer Z",
+        "tags": [
+            "structural",
+            "cosmetic"
+        ],
+        "stepsToReproduce": [
+            "Locate the component",
+            "Apply standard inspection procedure",
+            "Record observation #8"
+        ],
+        "attachments": [
+            "https://example.com/images/defect_8_1.png",
+            "https://example.com/images/defect_8_2.png"
+        ],
+        "priorityRank": 8
+    },
+    {
+        "id": 9,
+        "title": "Defect 9",
+        "severity": "Medium",
+        "status": "Open",
+        "reportedBy": "Inspector I",
+        "description": "Auto-generated description for defect 9.",
+        "partNumber": "PN-3009",
+        "supplier": "SupplierE",
+        "createdAt": "2025-09-09T12:00:00",
+        "updatedAt": "2025-09-09T12:00:00",
+        "assignedTo": "Engineer X",
+        "tags": [
+            "critical",
+            "inspection"
+        ],
+        "stepsToReproduce": [
+            "Locate the component",
+            "Apply standard inspection procedure",
+            "Record observation #9"
+        ],
+        "attachments": [
+            "https://example.com/images/defect_9_1.png",
+            "https://example.com/images/defect_9_2.png"
+        ],
+        "priorityRank": 9
+    },
+    {
+        "id": 10,
+        "title": "Defect 10",
+        "severity": "High",
+        "status": "Closed",
+        "reportedBy": "Inspector J",
+        "description": "Auto-generated description for defect 10.",
+        "partNumber": "PN-3010",
+        "supplier": "SupplierA",
+        "createdAt": "2025-09-09T12:00:00",
+        "updatedAt": "2025-09-09T12:00:00",
+        "assignedTo": "Engineer Y",
+        "tags": [
+            "structural",
+            "cosmetic"
+        ],
+        "stepsToReproduce": [
+            "Locate the component",
+            "Apply standard inspection procedure",
+            "Record observation #10"
+        ],
+        "attachments": [
+            "https://example.com/images/defect_10_1.png",
+            "https://example.com/images/defect_10_2.png"
+        ],
+        "priorityRank": 10
+    },
+    {
+        "id": 11,
+        "title": "Defect 11",
+        "severity": "Critical",
+        "status": "In Progress",
+        "reportedBy": "Inspector K",
+        "description": "Auto-generated description for defect 11.",
+        "partNumber": "PN-3011",
+        "supplier": "SupplierB",
+        "createdAt": "2025-09-09T12:00:00",
+        "updatedAt": "2025-09-09T12:00:00",
+        "assignedTo": "Engineer Z",
+        "tags": [
+            "critical",
+            "inspection"
+        ],
+        "stepsToReproduce": [
+            "Locate the component",
+            "Apply standard inspection procedure",
+            "Record observation #11"
+        ],
+        "attachments": [
+            "https://example.com/images/defect_11_1.png",
+            "https://example.com/images/defect_11_2.png"
+        ],
+        "priorityRank": 11
+    },
+    {
+        "id": 12,
+        "title": "Defect 12",
+        "severity": "Low",
+        "status": "Open",
+        "reportedBy": "Inspector L",
+        "description": "Auto-generated description for defect 12.",
+        "partNumber": "PN-3012",
+        "supplier": "SupplierC",
+        "createdAt": "2025-09-09T12:00:00",
+        "updatedAt": "2025-09-09T12:00:00",
+        "assignedTo": "Engineer X",
+        "tags": [
+            "structural",
+            "cosmetic"
+        ],
+        "stepsToReproduce": [
+            "Locate the component",
+            "Apply standard inspection procedure",
+            "Record observation #12"
+        ],
+        "attachments": [
+            "https://example.com/images/defect_12_1.png",
+            "https://example.com/images/defect_12_2.png"
+        ],
+        "priorityRank": 12
+    },
+    {
+        "id": 13,
+        "title": "Defect 13",
+        "severity": "Medium",
+        "status": "Closed",
+        "reportedBy": "Inspector M",
+        "description": "Auto-generated description for defect 13.",
+        "partNumber": "PN-3013",
+        "supplier": "SupplierD",
+        "createdAt": "2025-09-09T12:00:00",
+        "updatedAt": "2025-09-09T12:00:00",
+        "assignedTo": "Engineer Y",
+        "tags": [
+            "critical",
+            "inspection"
+        ],
+        "stepsToReproduce": [
+            "Locate the component",
+            "Apply standard inspection procedure",
+            "Record observation #13"
+        ],
+        "attachments": [
+            "https://example.com/images/defect_13_1.png",
+            "https://example.com/images/defect_13_2.png"
+        ],
+        "priorityRank": 13
+    },
+    {
+        "id": 14,
+        "title": "Defect 14",
+        "severity": "High",
+        "status": "In Progress",
+        "reportedBy": "Inspector N",
+        "description": "Auto-generated description for defect 14.",
+        "partNumber": "PN-3014",
+        "supplier": "SupplierE",
+        "createdAt": "2025-09-09T12:00:00",
+        "updatedAt": "2025-09-09T12:00:00",
+        "assignedTo": "Engineer Z",
+        "tags": [
+            "structural",
+            "cosmetic"
+        ],
+        "stepsToReproduce": [
+            "Locate the component",
+            "Apply standard inspection procedure",
+            "Record observation #14"
+        ],
+        "attachments": [
+            "https://example.com/images/defect_14_1.png",
+            "https://example.com/images/defect_14_2.png"
+        ],
+        "priorityRank": 14
+    },
+    {
+        "id": 15,
+        "title": "Defect 15",
+        "severity": "Critical",
+        "status": "Open",
+        "reportedBy": "Inspector O",
+        "description": "Auto-generated description for defect 15.",
+        "partNumber": "PN-3015",
+        "supplier": "SupplierA",
+        "createdAt": "2025-09-09T12:00:00",
+        "updatedAt": "2025-09-09T12:00:00",
+        "assignedTo": "Engineer X",
+        "tags": [
+            "critical",
+            "inspection"
+        ],
+        "stepsToReproduce": [
+            "Locate the component",
+            "Apply standard inspection procedure",
+            "Record observation #15"
+        ],
+        "attachments": [
+            "https://example.com/images/defect_15_1.png",
+            "https://example.com/images/defect_15_2.png"
+        ],
+        "priorityRank": 15
+    }
+]
